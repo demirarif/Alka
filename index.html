@@ -17,6 +17,7 @@
       color: #1a1a1a;
       overflow-x: hidden;
       line-height: 1.6;
+      box-sizing: border-box;
     }
 
     html {
@@ -50,11 +51,10 @@
       align-items: center;
     }
 
-    .nav-logo {
-      font-size: 1.8rem;
-      font-weight: 800;
-      color: #ff6600;
-      letter-spacing: 2px;
+    .nav-logo-img {
+      height: 50px;
+      width: auto;
+      display: block;
     }
 
     .nav-links {
@@ -114,6 +114,11 @@
     .nav-links li:nth-child(3) { animation-delay: 0.3s; }
     .nav-links li:nth-child(4) { animation-delay: 0.4s; }
     .nav-links li:nth-child(5) { animation-delay: 0.5s; }
+    .nav-links li:nth-child(6) { animation-delay: 0.6s; }
+    .nav-links li:nth-child(7) { animation-delay: 0.7s; }
+    .nav-links li:nth-child(8) { animation-delay: 0.8s; }
+    .nav-links li:nth-child(9) { animation-delay: 0.9s; }
+    .nav-links li:nth-child(10) { animation-delay: 1.0s; }
 
     /* Hero Section */
     .hero {
@@ -220,16 +225,16 @@
     .hero-logo {
       width: 150px;
       height: 150px;
-      background: #ff6600;
-      border-radius: 12px;
+      margin: 0 auto 2.5rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 4rem;
-      font-weight: 900;
-      color: #ffffff;
-      margin: 0 auto 2.5rem;
-      box-shadow: 0 15px 40px rgba(255, 102, 0, 0.4);
+    }
+
+    .hero-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
 
     .hero-card h3 {
@@ -462,6 +467,136 @@
       margin-top: auto;
     }
 
+    /* Content Sections */
+    .content-sections {
+      padding: 6rem 2rem;
+      background: #2a2a2a;
+    }
+
+    .content-container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .content-nav {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 2px solid #f5f5f5;
+      justify-content: center;
+    }
+
+    .content-nav-link {
+      color: #1a1a1a;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 102, 0, 0.2);
+    }
+
+    .content-nav-link:hover {
+      background: #ff6600;
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    .content-section {
+      padding: 2.5rem 0;
+      border-bottom: 1px solid rgba(255, 102, 0, 0.2);
+    }
+
+    .content-section:last-child {
+      border-bottom: none;
+    }
+
+    .content-section h2 {
+      font-size: 2rem;
+      color: #e0e0e0;
+      margin-bottom: 2rem;
+      font-weight: 800;
+    }
+
+    .content-description {
+      color: #666666;
+      font-size: 1.05rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+
+    /* News Card Styles */
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .news-card {
+      background: #1a1a1a;
+      border: 1px solid rgba(255, 102, 0, 0.2);
+      border-radius: 8px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .news-card:hover {
+      border-color: #ff6600;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .news-card h4 {
+      font-size: 1.2rem;
+      color: #e0e0e0;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    .news-meta {
+      font-size: 0.8rem;
+      color: #ff6600;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .news-preview {
+      color: #b0b0b0;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      flex-grow: 1;
+    }
+
+    .news-actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: auto;
+    }
+
+    .news-actions a {
+      color: #ff6600;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .news-actions a:hover {
+      color: #e65c00;
+      transform: translateX(5px);
+    }
+
     /* About Section */
     .about {
       padding: 6rem 2rem;
@@ -629,12 +764,17 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: #ff6600;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
       position: relative;
       z-index: 1;
+      overflow: hidden;
+      border: 3px solid #ffffff;
+    }
+
+    .team-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .team-body {
@@ -691,6 +831,83 @@
       background: #ff6600;
       color: #ffffff;
       transform: translateY(-2px);
+    }
+
+    /* Projects Section */
+    .projects {
+      padding: 6rem 2rem;
+      background: #ffffff;
+    }
+
+    .projects-container {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .projects-flip-card {
+      width: 100%;
+      max-width: 900px;
+      height: 300px;
+      perspective: 1000px;
+      margin: 0 auto;
+      cursor: pointer;
+    }
+
+    .projects-flip-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+
+    .projects-flip-card:hover .projects-flip-inner {
+      transform: rotateY(180deg);
+    }
+
+    .projects-flip-card.flipped .projects-flip-inner {
+      transform: rotateY(180deg);
+    }
+
+    .projects-flip-front, .projects-flip-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border-radius: 8px;
+      padding: 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .projects-flip-front {
+      background: #2a2a2a;
+      border: 1px solid rgba(255, 102, 0, 0.2);
+    }
+
+    .projects-flip-front h3 {
+      font-size: 3rem;
+      color: #ff6600;
+      margin-bottom: 0;
+      font-weight: 700;
+    }
+
+    .projects-flip-back {
+      background: #ff6600;
+      color: white;
+      transform: rotateY(180deg);
+    }
+
+    .projects-message {
+      font-size: 1.5rem;
+      color: #ffffff;
+      font-weight: 500;
+      line-height: 1.6;
     }
 
     /* Contact Section */
@@ -889,7 +1106,6 @@
       .hero-logo {
         width: 120px;
         height: 120px;
-        font-size: 3rem;
       }
 
       .hero-card h3 {
@@ -918,12 +1134,8 @@
         text-align: center;
       }
 
-      .contact-social {
-        flex-direction: column;
-      }
-
-      .contact-social a {
-        width: 100%;
+      .news-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -933,15 +1145,14 @@
  </head>
  <body><!-- Navigation -->
   <nav id="navbar">
-   <div class="nav-container">
-    <div class="nav-logo">
-     ALKA
-    </div><button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+   <div class="nav-container"><img src="https://raw.githubusercontent.com/demirarif/Alka/main/assets/metin.png" alt="ALKA" class="nav-logo-img"> <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
     <ul class="nav-links" id="navLinks">
      <li><a href="#hero">Ana Sayfa</a></li>
      <li><a href="#insights">Teknoloji</a></li>
+     <li><a href="#yapay-zeka">Kütüphane</a></li>
      <li><a href="#about">Hakkımızda</a></li>
      <li><a href="#team">Ekip</a></li>
+     <li><a href="#projects">Projeler</a></li>
      <li><a href="#contact">İletişim</a></li>
     </ul>
    </div>
@@ -949,10 +1160,9 @@
   <section class="hero" id="hero">
    <div class="hero-container">
     <div class="hero-card">
-     <div class="hero-logo">
-      ALKA
+     <div class="hero-logo"><img src="https://raw.githubusercontent.com/demirarif/Alka/main/assets/daire.png" alt="ALKA Logo">
      </div>
-     <h3>Kahvenin dijital sesi.</h3>
+     <h3 style="color: #ff6600;">ALKA, kahvenin dijital sesi.</h3>
      <p>Kodla, tasarımla ve tutku dolu fikirlerle Arabica'nın geleceğini inşa ediyoruz.</p>
     </div>
    </div>
@@ -981,8 +1191,8 @@
        <p>Kahve endüstrisinde AI kullanımı, müşteri deneyimini nasıl dönüştürüyor?</p>
       </div>
       <div class="flip-card-back">
-       <h4>AI in Coffee Industry</h4>
-       <p>Makine öğrenimi ile kahve kalitesi tahminleme, otomatik sipariş sistemleri ve kişiselleştirilmiş öneriler.</p><a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai" target="_blank" rel="noopener noreferrer">McKinsey AI Report →</a>
+       <h4>Kahve Endüstrisinde Yapay Zeka</h4>
+       <p>Makine öğrenimi ile kahve kalitesi tahminleme, otomatik sipariş sistemleri ve kişiselleştirilmiş öneriler.</p><a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai" target="_blank" rel="noopener noreferrer">McKinsey AI Raporu →</a>
       </div>
      </div>
     </div>
@@ -993,8 +1203,8 @@
        <p>Kahve üretiminde çevre dostu uygulamalar ve karbon ayak izi azaltma.</p>
       </div>
       <div class="flip-card-back">
-       <h4>SDGs &amp; Sustainability</h4>
-       <p>BM Sürdürülebilir Kalkınma Hedefleri kapsamında kahve endüstrisinin rolü ve yeşil teknolojiler.</p><a href="https://www.wri.org/insights/sustainable-coffee-production" target="_blank" rel="noopener noreferrer">World Resources Institute →</a>
+       <h4>Sürdürülebilir Kalkınma Hedefleri</h4>
+       <p>BM Sürdürülebilir Kalkınma Hedefleri kapsamında kahve endüstrisinin rolü ve yeşil teknolojiler.</p><a href="https://www.wri.org/insights/sustainable-coffee-production" target="_blank" rel="noopener noreferrer">Dünya Kaynakları Enstitüsü →</a>
       </div>
      </div>
     </div>
@@ -1005,8 +1215,8 @@
        <p>Temassız ödeme, QR kod sipariş sistemleri ve mobil sadakat programları.</p>
       </div>
       <div class="flip-card-back">
-       <h4>Mobile-First Approach</h4>
-       <p>Progressive Web Apps, contactless ordering ve mobile payment sistemlerinin kahve zincirlerindeki uygulamaları.</p><a href="https://www.gartner.com/en/newsroom/press-releases/mobile-technology-trends" target="_blank" rel="noopener noreferrer">Gartner Mobile Trends →</a>
+       <h4>Mobil Öncelikli Yaklaşım</h4>
+       <p>Progressive Web Apps, contactless ordering ve mobile payment sistemlerinin kahve zincirlerindeki uygulamaları.</p><a href="https://www.gartner.com/en/newsroom/press-releases/mobile-technology-trends" target="_blank" rel="noopener noreferrer">Gartner Mobil Trendler →</a>
       </div>
      </div>
     </div>
@@ -1017,7 +1227,7 @@
        <p>Müşteri davranışı analizi, satış tahminleme ve stok optimizasyonu.</p>
       </div>
       <div class="flip-card-back">
-       <h4>Data-Driven Decisions</h4>
+       <h4>Veri Odaklı Kararlar</h4>
        <p>Big Data ve analytics araçları ile operasyonel verimlilik artışı ve müşteri memnuniyeti ölçümü.</p><a href="https://hbr.org/2020/02/how-to-build-a-data-driven-company" target="_blank" rel="noopener noreferrer">Harvard Business Review →</a>
       </div>
      </div>
@@ -1029,8 +1239,8 @@
        <p>Cloud-based yönetim sistemleri ve gerçek zamanlı veri senkronizasyonu.</p>
       </div>
       <div class="flip-card-back">
-       <h4>Cloud Infrastructure</h4>
-       <p>AWS, Azure ve Google Cloud platformlarında ölçeklenebilir kahve zinciri yönetim çözümleri.</p><a href="https://www.forrester.com/blogs/category/cloud-computing/" target="_blank" rel="noopener noreferrer">Forrester Cloud Insights →</a>
+       <h4>Bulut Altyapısı</h4>
+       <p>AWS, Azure ve Google Cloud platformlarında ölçeklenebilir kahve zinciri yönetim çözümleri.</p><a href="https://www.forrester.com/blogs/category/cloud-computing/" target="_blank" rel="noopener noreferrer">Forrester Bulut İçgörüleri →</a>
       </div>
      </div>
     </div>
@@ -1041,9 +1251,222 @@
        <p>Kişiselleştirme, gamification ve omnichannel stratejiler.</p>
       </div>
       <div class="flip-card-back">
-       <h4>CX Innovation</h4>
-       <p>Customer journey mapping, loyalty programs ve personalized marketing stratejileri.</p><a href="https://www.accenture.com/us-en/insights/interactive-index" target="_blank" rel="noopener noreferrer">Accenture CX Research →</a>
+       <h4>Müşteri Deneyimi İnovasyonu</h4>
+       <p>Customer journey mapping, loyalty programs ve personalized marketing stratejileri.</p><a href="https://www.accenture.com/us-en/insights/interactive-index" target="_blank" rel="noopener noreferrer">Accenture Müşteri Deneyimi Araştırması →</a>
       </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Content Sections -->
+  <section class="content-sections" id="content">
+   <div class="content-container"><!-- YAPAY ZEKA -->
+    <div class="content-section" id="yapay-zeka">
+     <h2>Yapay Zekâ (AI)</h2>
+     <div class="news-grid">
+      <article class="news-card">
+       <h4>Yapay Zeka Nedir?</h4>
+       <div class="news-meta">
+        IBM • Rehber
+       </div>
+       <p class="news-preview">Temel kavramlar, kullanım alanları ve iş etkileri. Yapay zekanın temelleri ve işletmelerdeki uygulamaları hakkında kapsamlı rehber.</p>
+       <div class="news-actions"><a target="_blank" href="https://www.ibm.com/think/topics/artificial-intelligence" rel="noopener noreferrer">Daha fazla →</a>
+       </div>
+      </article>
+      <article class="news-card">
+       <h4>Yapay Zeka Endeksi 2025</h4>
+       <div class="news-meta">
+        Stanford HAI • Rapor
+       </div>
+       <p class="news-preview">Küresel metrikler: araştırma, ekonomi, regülasyon. Stanford Üniversitesi'nin yapay zeka alanındaki en güncel araştırma ve trend raporu.</p>
+       <div class="news-actions"><a target="_blank" href="https://hai.stanford.edu/ai-index/2025-ai-index-report" rel="noopener noreferrer">Daha fazla →</a>
+       </div>
+      </article>
+      <article class="news-card">
+       <h4>AB Yapay Zeka Yasası</h4>
+       <div class="news-meta">
+        AB • Düzenleme
+       </div>
+       <p class="news-preview">Risk tabanlı yaklaşım ve uyum gereklilikleri. Avrupa Birliği'nin yapay zeka düzenlemeleri ve işletmeler için uyum rehberi.</p>
+       <div class="news-actions"><a target="_blank" href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" rel="noopener noreferrer">Daha fazla →</a>
+       </div>
+      </article>
+      <article class="news-card">
+       <h4>Üretimde Generatif Yapay Zeka</h4>
+       <div class="news-meta">
+        Google Cloud • Rehber
+       </div>
+       <p class="news-preview">LLM mimarileri, güvenlik ve maliyet optimizasyonu. Üretim ortamlarında generatif AI uygulamaları için teknik rehber.</p>
+       <div class="news-actions"><a target="_blank" href="https://cloud.google.com/architecture" rel="noopener noreferrer">Daha fazla →</a>
+       </div>
+      </article>
+      <article class="news-card">
+       <h4>Makine Öğreniminin Sınırları</h4>
+       <div class="news-meta">
+        MIT • İçgörüler
+       </div>
+       <p class="news-preview">Öne çıkan araştırmalar ve etkileri. MIT'nin makine öğrenimi alanındaki en son araştırmaları ve gelecek öngörüleri.</p>
+       <div class="news-actions"><a target="_blank" href="https://news.mit.edu/topic/machine-learning" rel="noopener noreferrer">Daha fazla →</a>
+       </div>
+      </article>
+      <article class="news-card">
+       <h4>Yapay Zeka ve Güvenlik</h4>
+       <div class="news-meta">
+        NIST • Çerçeve
+       </div>
+       <p class="news-preview">Risk yönetimi ve güvenlik ölçümlemeleri. NIST'in yapay zeka güvenliği ve risk yönetimi için geliştirdiği standartlar.</p>
+       <div class="news-actions"><a target="_blank" href="https://www.nist.gov/itl/ai-risk-management-framework" rel="noopener noreferrer">Daha fazla →</a>
+       </div>
+      </article>
+     </div>
+    </div><!-- BLOCKCHAIN -->
+    <div class="content-section" id="blockchain">
+     <h2>Blockchain</h2>
+     <div class="news-grid">
+      <article class="news-card">
+       <h4>Blockchain Nedir?</h4>
+       <div class="news-meta">
+        IBM • Rehber
+       </div>
+       <p class="news-preview">Dağıtık defter, bloklar ve konsensüs. Blockchain teknolojisinin temel prensipleri ve iş dünyasındaki uygulamaları.</p>
+       <div class="news-actions"><a target="_blank" href="https://www.ibm.com/think/topics/blockchain" rel="noopener noreferrer">Daha fazla →</a>
+       </div>
+      </article>
+      <article class="news-card">
+       <h4>Ethereum Nedir?</h4>
+       <div class="news-meta">
+        Ethereum.org • Giriş
+       </div>
+       <p class="news-preview">Akıllı sözleşmeler ve dApp ekosistemi. Ethereum platformu ve merkezi olmayan uygulamalar hakkında başlangıç rehberi.</p>
+       <div class="news-actions"><a target="_blank" href="https://ethereum.org/what-is-ethereum/" rel="noopener noreferrer">Daha fazla →</a>
+       </div>
+      </article>
+      <article class="news-card">
+       <h4>Ethereum'a Giriş</h4>
+       <div class="news-meta">
+        Geliştirici Dokümanları • Teknik
+       </div>
+       <p class="news-preview">Geliştirici başlangıcı: araçlar ve ağlar. Ethereum üzerinde geliştirme yapmak için gerekli araçlar ve teknik dokümantasyon.</p>
+       <div class="news-actions"><a target="_blank" href="https://ethereum.org/developers/docs/intro-to-ethereum/" rel="noopener noreferrer">Daha fazla →</a>
+       </div>
+      </article>
+      <article class="news-card">
+       <h4>Tedarik Zinciri</h4>
+       <div class="news-meta">
+        Dünya Bankası • Not
+       </div>
+       <p class="news-preview">İzlenebilirlik, şeffaflık ve maliyet etkileri. Blockchain'in tedarik zinciri yönetimindeki rolü ve ekonomik etkileri.</p>
+       <div class="news-actions"><a target="_blank" href="https://www.worldbank.org/en/topic/financialsector/brief/blockchain" rel="noopener noreferrer">Daha fazla →</a>
+       </div>
+      </article>
+      <article class="news-card">
+       <h4>Merkez Bankası Dijital Paraları ve Politika</h4>
+       <div class="news-meta">
+        BIS • Özetler
+       </div>
+       <p class="news-preview">Merkez bankası dijital paraları. Dijital para birimleri ve merkez bankalarının blockchain stratejileri.</p>
+       <div class="news-actions"><a target="_blank" href="https://www.bis.org/cbdc/" rel="noopener noreferrer">Daha fazla →</a>
+       </div>
+      </article>
+      <article class="news-card">
+       <h4>Sıfır Bilgi İspatı 101</h4>
+       <div class="news-meta">
+        Vitalik Blog • Yazı
+       </div>
+       <p class="news-preview">Gizlilik ve ölçeklenebilirlik. Zero-knowledge proof teknolojisi ve blockchain ölçeklenebilirliğindeki rolü.</p>
+       <div class="news-actions"><a target="_blank" href="https://vitalik.ca/general/2021/01/26/snarks.html" rel="noopener noreferrer">Daha fazla →</a>
+       </div>
+      </article>
+     </div>
+    </div><!-- HABERLER -->
+    <div class="content-section" id="haberler">
+     <h2>Haberler</h2>
+     <div class="news-grid">
+      <article class="news-card">
+       <h4>AB Yapay Zeka Uygulama Kuralları</h4>
+       <div class="news-meta">
+        AP News • Politika
+       </div>
+       <p class="news-preview">Genel amaçlı modeller için sorumlu kullanım çerçevesi. Avrupa Birliği'nin yapay zeka kullanımı için belirlediği etik kurallar.</p>
+       <div class="news-actions"><a target="_blank" href="https://apnews.com/article/a3df6a1a8789eea7fcd17bffc750e291" rel="noopener noreferrer">Daha fazla →</a>
+       </div>
+      </article>
+      <article class="news-card">
+       <h4>Yapay Zeka Kötüye Kullanımı Rehberi</h4>
+       <div class="news-meta">
+        Reuters • Düzenleme
+       </div>
+       <p class="news-preview">İşverenler ve kamu kurumları için kötüye kullanım ilkeleri. AI sistemlerinin etik ve yasal kullanımı için düzenleyici rehber.</p>
+       <div class="news-actions"><a target="_blank" href="https://www.reuters.com/technology/artificial-intelligence/eu-lays-out-guidelines-misuse-ai-by-employers-websites-police-2025-02-04/" rel="noopener noreferrer">Daha fazla →</a>
+       </div>
+      </article>
+      <article class="news-card">
+       <h4>AB'nin 200 Milyar Euro'luk Yapay Zeka Girişimi</h4>
+       <div class="news-meta">
+        The Verge • Yatırım
+       </div>
+       <p class="news-preview">Araştırma, altyapı ve startup hızlandırmaları. Avrupa Birliği'nin yapay zeka alanındaki dev yatırım planı.</p>
+       <div class="news-actions"><a target="_blank" href="https://www.theverge.com/news/609930/eu-200-billion-investment-ai-development" rel="noopener noreferrer">Daha fazla →</a>
+       </div>
+      </article>
+      <article class="news-card">
+       <h4>OpenAI Güncellemeleri</h4>
+       <div class="news-meta">
+        Yapay Zeka • Ürün
+       </div>
+       <p class="news-preview">Yeni model duyuruları ve güvenlik politikaları. OpenAI'ın en son ürün güncellemeleri ve teknolojik gelişmeleri.</p>
+       <div class="news-actions"><a target="_blank" href="https://openai.com/blog" rel="noopener noreferrer">Daha fazla →</a>
+       </div>
+      </article>
+      <article class="news-card">
+       <h4>AB Dijital Politikaları</h4>
+       <div class="news-meta">
+        Politika
+       </div>
+       <p class="news-preview">Dijital Pazarlar ve AI yönergeleri. Avrupa'nın dijital ekonomi ve yapay zeka stratejileri.</p>
+       <div class="news-actions"><a target="_blank" href="https://digital-strategy.ec.europa.eu/en" rel="noopener noreferrer">Daha fazla →</a>
+       </div>
+      </article>
+     </div>
+    </div><!-- TRENDLER -->
+    <div class="content-section" id="trendler">
+     <h2>Trendler</h2>
+     <div class="news-grid">
+      <article class="news-card">
+       <h4>Kahve ve Nesnelerin İnterneti Operasyonları</h4>
+       <div class="news-meta">
+        Operasyonlar
+       </div>
+       <p class="news-preview">Demleme kalitesi, enerji verimliliği ve sensör tabanlı izleme. IoT teknolojilerinin kahve üretimindeki uygulamaları.</p>
+       <div class="news-actions"><a target="_blank" href="https://www.google.com/search?q=coffee+iot+operations" rel="noopener noreferrer">Daha fazla →</a>
+       </div>
+      </article>
+      <article class="news-card">
+       <h4>Fazla Gıda Uygulamaları</h4>
+       <div class="news-meta">
+        Sürdürülebilirlik
+       </div>
+       <p class="news-preview">Fazla taze ürünlerin tüketiciye ulaşmasını sağlayan modeller. Gıda israfını önleyen dijital çözümler ve sürdürülebilirlik.</p>
+       <div class="news-actions"><a target="_blank" href="https://www.google.com/search?q=food+waste+app+surplus+meals" rel="noopener noreferrer">Daha fazla →</a>
+       </div>
+      </article>
+      <article class="news-card">
+       <h4>Kahve Pazar Trendleri 2025</h4>
+       <div class="news-meta">
+        Pazar
+       </div>
+       <p class="news-preview">3. nesil kahvecilik ve sürdürülebilir tedarik. Kahve endüstrisinin geleceğini şekillendiren trendler ve pazar analizleri.</p>
+       <div class="news-actions"><a target="_blank" href="https://www.google.com/search?q=coffee+market+trends+2025" rel="noopener noreferrer">Daha fazla →</a>
+       </div>
+      </article>
+      <article class="news-card">
+       <h4>Kahve ve Sürdürülebilirlik</h4>
+       <div class="news-meta">
+        Sürdürülebilirlik
+       </div>
+       <p class="news-preview">İklim etkisi, su kullanımı ve adil tedarik. Kahve üretiminde çevresel sürdürülebilirlik ve sosyal sorumluluk.</p>
+       <div class="news-actions"><a target="_blank" href="https://www.sciencedirect.com/topics/agricultural-and-biological-sciences/coffee" rel="noopener noreferrer">Daha fazla →</a>
+       </div>
+      </article>
      </div>
     </div>
    </div>
@@ -1101,8 +1524,7 @@
    <div class="team-container"><!-- Eslem Nur Kalay -->
     <div class="team-card">
      <div class="team-header">
-      <div class="team-photo">
-       ENK
+      <div class="team-photo"><img src="https://raw.githubusercontent.com/demirarif/Alka/main/assets/eslemlinkedin.jpg" alt="Eslem Nur Kalay">
       </div>
      </div>
      <div class="team-body">
@@ -1111,14 +1533,13 @@
       <p>Eslem Nur Kalay, siyaset bilimi, kamu yönetimi ve iletişim alanlarında disiplinler arası bir bakış açısına sahip bir profesyoneldir. Orta Doğu Teknik Üniversitesi Siyaset Bilimi ve Kamu Yönetimi öğrencisidir ve çalışmalarını dış politika, kamu diplomasisi ve sürdürülebilir kalkınma temaları üzerinde yoğunlaştırmaktadır.</p>
       <p>Kalay, iletişim ve araştırma odaklı kuruluşlarda deneyim kazanmıştır. Özgelecek ve Locomar'da pazarlama stajlarıyla dijital iletişim ve marka yönetimi süreçlerinde çalışmış; KONDA Araştırma ve Danışmanlık'ta kamuoyu analizi üzerine saha araştırmaları yürütmüştür. EUROsimA organizasyonunda Halkla İlişkiler ve Delegasyon İlişkileri Görevlisi olarak görev alarak temsil, iletişim ve müzakere becerilerini geliştirmiştir.</p>
       <p>Akademik üretkenliğini Hariciye Journal dergisinde yayımlanan dış politika yazılarıyla sürdürmektedir. Toplumsal duyarlılığı yüksek bir bakış açısıyla hareket eden Kalay, sosyal sorumluluk ve erişilebilirlik odaklı birçok toplulukta aktif görev almış; kamu politikası, diplomasi ve medya kesişiminde sürdürülebilir etki yaratmayı hedeflemektedir.</p>
-      <div class="team-social"><a href="https://www.linkedin.com/in/eslem-nur-kalay/" target="_blank" rel="noopener noreferrer">LinkedIn</a> <a href="https://www.instagram.com/eslemnurkalay/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <div class="team-social"><a href="https://www.linkedin.com/in/eslemnurkalay/?locale=tr_TR" target="_blank" rel="noopener noreferrer">LinkedIn</a> <a href="https://www.instagram.com/eslemnurkly/" target="_blank" rel="noopener noreferrer">Instagram</a>
       </div>
      </div>
     </div><!-- Arif Demir -->
     <div class="team-card">
      <div class="team-header">
-      <div class="team-photo">
-       AD
+      <div class="team-photo"><img src="https://raw.githubusercontent.com/demirarif/Alka/main/assets/arifdemirlinkedin.jpg" alt="Arif Demir">
       </div>
      </div>
      <div class="team-body">
@@ -1127,14 +1548,13 @@
       <p>Arif Demir, mühendislik, girişimcilik ve liderlik alanlarında çok yönlü bir profesyoneldir. TOBB Ekonomi ve Teknoloji Üniversitesi Elektrik-Elektronik Mühendisliği ve Matematik bölümlerinden mezun olan Demir, mühendislik bilgisini yenilikçi iş modelleriyle birleştirerek teknoloji, tasarım ve marka yönetimi odaklı projeler geliştirmektedir.</p>
       <p>Savunma sanayiinde FNSS Savunma Sistemleri A.Ş., endüstriyel üretimde Arçelik Ar-Ge Merkezi, finansal teknolojilerde Papara ve uluslararası düzeyde İktisadi Kalkınma Vakfı Brüksel Ofisi gibi kurumlarda çalışarak farklı sektörlerde deneyim kazanmıştır. Demir, restoran, kafe ve marketlerdeki fazla ancak taze ürünleri kullanıcılarla buluşturarak çevresel ve ekonomik sürdürülebilirliğe katkı sağlayan, Sürdürülebilir Kalkınma Amaçları (özellikle SDG 12 ve 13) doğrultusunda sosyal etki odaklı bir girişim olan Rafta'nın kurucusudur.</p>
       <p>Liderlik yönüyle öne çıkan Demir; TOBB ETÜ Öğrenci Konseyi Başkanı olarak binlerce öğrenciyi temsil etmiş, ayrıca IEEE TOBB ETÜ ve Google Developer Student Clubs başkanlık görevleriyle kampüs topluluklarında teknoloji kültürünün gelişimine katkıda bulunmuştur. Yenibirlider LEAD21 Fellow olarak seçilen Türkiye'nin 21 genç liderinden biri olan Demir, teknoloji, girişimcilik ve sürdürülebilirlik alanlarını bir araya getiren çalışmalarıyla ilham vermeye devam etmektedir.</p>
-      <div class="team-social"><a href="https://www.linkedin.com/in/arif-demir/" target="_blank" rel="noopener noreferrer">LinkedIn</a> <a href="https://www.instagram.com/arifdemir/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <div class="team-social"><a href="https://www.linkedin.com/in/arif-demir/" target="_blank" rel="noopener noreferrer">LinkedIn</a> <a href="https://www.instagram.com/ariftpdemir/" target="_blank" rel="noopener noreferrer">Instagram</a>
       </div>
      </div>
     </div><!-- Ela Erdinç -->
     <div class="team-card">
      <div class="team-header">
-      <div class="team-photo">
-       EE
+      <div class="team-photo"><img src="https://raw.githubusercontent.com/demirarif/Alka/main/assets/elalinkedin.jpg" alt="Ela Erdinç">
       </div>
      </div>
      <div class="team-body">
@@ -1143,7 +1563,25 @@
       <p>Ela Erdinç, gıda mühendisliği, kalite yönetimi ve üretim teknolojileri alanlarında uzmanlaşan bir profesyoneldir. Orta Doğu Teknik Üniversitesi Gıda Mühendisliği bölümünde eğitimine devam etmekte ve akademik çalışmalarında gıda güvenliği, proses verimliliği ve sürdürülebilir üretim sistemlerine odaklanmaktadır.</p>
       <p>Erdinç, gıda sektörünün öncü kurumlarında edindiği deneyimlerle laboratuvar analizleri, kalite kontrol ve üretim optimizasyonu konularında yetkinlik kazanmıştır. Kavaklıdere A.Ş. ve Atatürk Orman Çiftliği Meyve Suyu ve Bal Fabrikası'nda gerçekleştirdiği stajlar, hammaddeden nihai ürüne kadar tüm üretim zincirinde aktif sorumluluk almasını sağlamıştır.</p>
       <p>Analitik düşünme yeteneği, disiplinli çalışma biçimi ve sürdürülebilir üretime olan ilgisiyle öne çıkan Erdinç; kalite sistemleri, gıda bilimi ve ürün güvenliği alanlarında yenilikçi çözümler geliştirmeyi hedeflemektedir.</p>
-      <div class="team-social"><a href="https://www.linkedin.com/in/ela-erdinc/" target="_blank" rel="noopener noreferrer">LinkedIn</a> <a href="https://www.instagram.com/elaerdinc/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <div class="team-social"><a href="https://www.linkedin.com/in/ela-erdinç-8864b51b1" target="_blank" rel="noopener noreferrer">LinkedIn</a> <a href="https://www.instagram.com/elaerdinc/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Projects Section -->
+  <section class="projects" id="projects">
+   <div class="projects-container">
+    <div class="section-header">
+     <h2 class="section-title">Projelerimiz</h2>
+     <p class="section-description">İnovasyon ve teknoloji odaklı çalışmalarımız</p>
+    </div>
+    <div class="projects-flip-card">
+     <div class="projects-flip-inner">
+      <div class="projects-flip-front">
+       <h3>Projeler</h3>
+      </div>
+      <div class="projects-flip-back">
+       <p class="projects-message">Yakında fikirlerimizin projelerini burada görebileceksiniz.</p>
       </div>
      </div>
     </div>
@@ -1167,13 +1605,13 @@
    <div class="footer-content">
     <div class="footer-links-container">
      <div class="footer-column">
-      <h5>ALKA</h5><a href="#about">Hakkımızda</a> <a href="#team">Ekip</a> <a href="#contact">İletişim</a>
+      <h5>ALKA</h5><a href="#about">Hakkımızda</a> <a href="#team">Ekip</a> <a href="#projects">Projeler</a> <a href="#content">İçerik</a> <a href="#contact">İletişim</a>
      </div>
      <div class="footer-column">
       <h5>Teknoloji</h5><a href="#insights">İnovasyon</a> <a href="#insights">Sürdürülebilirlik</a> <a href="#insights">Veri Analitiği</a>
      </div>
      <div class="footer-column">
-      <h5>Sosyal Medya</h5><a href="https://www.linkedin.com/in/eslem-nur-kalay/" target="_blank" rel="noopener noreferrer">Eslem - LinkedIn</a> <a href="https://www.linkedin.com/in/arif-demir/" target="_blank" rel="noopener noreferrer">Arif - LinkedIn</a> <a href="https://www.linkedin.com/in/ela-erdinc/" target="_blank" rel="noopener noreferrer">Ela - LinkedIn</a>
+      <h5>Sosyal Medya</h5><a href="https://www.linkedin.com/in/eslemnurkalay/?locale=tr_TR" target="_blank" rel="noopener noreferrer">Eslem - LinkedIn</a> <a href="https://www.instagram.com/eslemnurkly/" target="_blank" rel="noopener noreferrer">Eslem - Instagram</a> <a href="https://www.linkedin.com/in/arif-demir/" target="_blank" rel="noopener noreferrer">Arif - LinkedIn</a> <a href="https://www.instagram.com/ariftpdemir/" target="_blank" rel="noopener noreferrer">Arif - Instagram</a> <a href="https://www.linkedin.com/in/ela-erdinç-8864b51b1" target="_blank" rel="noopener noreferrer">Ela - LinkedIn</a> <a href="https://www.instagram.com/elaerdinc/" target="_blank" rel="noopener noreferrer">Ela - Instagram</a>
      </div>
      <div class="footer-column">
       <h5>Yasal</h5><a href="#">Gizlilik Politikası</a> <a href="#">Kullanım Koşulları</a> <a href="#">Çerez Politikası</a>
@@ -1273,9 +1711,13 @@
       this.classList.toggle('flipped');
     });
 
+    document.querySelector('.projects-flip-card').addEventListener('click', function() {
+      this.classList.toggle('flipped');
+    });
+
     // Element SDK Configuration
     const defaultConfig = {
-      hero_title: "Arabica Coffee House'ta doğan teknoloji takımı: ALKA",
+      hero_title: "Arabica Coffee House'da doğan teknoloji takımı: ALKA",
       hero_subtitle: "Üç genç, bir kahve zinciri ve sınırsız hayal gücü.",
       hero_description: "Arabica Coffee House için geliştirilen yenilikçi teknolojilerle, kahvenin ötesinde bir deneyim inşa ediyoruz.",
       mission_text: "Kahve kültürünü teknolojiyle birleştirerek Arabica Coffee House deneyimini geleceğe taşımak. Müşterilerimize dijital çözümlerle daha hızlı, daha kişiselleştirilmiş ve daha sürdürülebilir bir kahve deneyimi sunmak.",
@@ -1359,5 +1801,5 @@
       });
     }
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99cca34fa6bedf5f',t:'MTc2Mjg1MjAzMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99ce669330f7df5f',t:'MTc2Mjg3MDUxNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
