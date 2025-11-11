@@ -1,0 +1,1342 @@
+<!doctype html>
+<html lang="tr">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALKA - Technology Group</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f5f5f5;
+      color: #1a1a1a;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      height: 100%;
+    }
+
+    /* Navbar */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(20px);
+      z-index: 1000;
+      padding: 1.2rem 2rem;
+      border-bottom: 1px solid rgba(255, 102, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    nav.scrolled {
+      padding: 0.8rem 2rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #ff6600;
+      letter-spacing: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: #cccccc;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+      display: inline-block;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #ff6600;
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #ff6600;
+      transform: translateY(-2px);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    @keyframes navFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .nav-links li {
+      animation: navFadeIn 0.5s ease-out both;
+    }
+
+    .nav-links li:nth-child(1) { animation-delay: 0.1s; }
+    .nav-links li:nth-child(2) { animation-delay: 0.2s; }
+    .nav-links li:nth-child(3) { animation-delay: 0.3s; }
+    .nav-links li:nth-child(4) { animation-delay: 0.4s; }
+    .nav-links li:nth-child(5) { animation-delay: 0.5s; }
+
+    /* Hero Section */
+    .hero {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12rem 2rem 8rem;
+      background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-container {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .btn-primary {
+      padding: 1rem 2.5rem;
+      background: #ff6600;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      background: #e65c00;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(255, 102, 0, 0.3);
+    }
+
+    .btn-secondary {
+      padding: 1rem 2.5rem;
+      background: transparent;
+      color: #ff6600;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      border: 2px solid #ff6600;
+      display: inline-block;
+    }
+
+    .btn-secondary:hover {
+      background: #ff6600;
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-card {
+      background: #2a2a2a;
+      padding: 4rem 3rem;
+      border-radius: 12px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 102, 0, 0.3);
+      text-align: center;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .hero-logo {
+      width: 150px;
+      height: 150px;
+      background: #ff6600;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      font-weight: 900;
+      color: #ffffff;
+      margin: 0 auto 2.5rem;
+      box-shadow: 0 15px 40px rgba(255, 102, 0, 0.4);
+    }
+
+    .hero-card h3 {
+      font-size: 2rem;
+      color: #ffffff;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+
+    .hero-card p {
+      color: #cccccc;
+      font-size: 1.15rem;
+      line-height: 1.8;
+    }
+
+    /* Intro Section */
+    .intro {
+      min-height: 100%;
+      display: flex;
+      align-items: center;
+      padding: 8rem 2rem 4rem;
+      background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .intro::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -20%;
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(255, 102, 0, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .intro-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .intro-content h1 {
+      font-size: 3.5rem;
+      font-weight: 900;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      color: #1a1a1a;
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .intro-content h2 {
+      font-size: 1.8rem;
+      color: #ff6600;
+      font-weight: 400;
+      margin-bottom: 2rem;
+      animation: fadeInUp 0.8s ease-out 0.2s both;
+    }
+
+    .intro-content p {
+      font-size: 1.2rem;
+      color: #666666;
+      margin-bottom: 3rem;
+      line-height: 1.8;
+      max-width: 900px;
+      animation: fadeInUp 0.8s ease-out 0.4s both;
+    }
+
+    .intro-buttons {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      animation: fadeInUp 0.8s ease-out 0.6s both;
+    }
+
+    /* Stats Section */
+    .stats {
+      background: #2d2d2d;
+      padding: 4rem 2rem;
+      position: relative;
+      overflow: hidden;
+      border-top: 1px solid rgba(139, 90, 43, 0.2);
+      border-bottom: 1px solid rgba(139, 90, 43, 0.2);
+    }
+
+    .stats-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 3rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .stat-item {
+      text-align: center;
+      color: #e0e0e0;
+    }
+
+    .stat-number {
+      font-size: 3.5rem;
+      font-weight: 900;
+      margin-bottom: 0.5rem;
+      display: block;
+      color: #8b5a2b;
+    }
+
+    .stat-label {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #b0b0b0;
+    }
+
+    /* Tech Insights Section */
+    .tech-insights {
+      padding: 6rem 2rem;
+      background: #f5f5f5;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 4rem;
+    }
+
+    .section-title {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: #1a1a1a;
+      margin-bottom: 1rem;
+    }
+
+    .section-description {
+      font-size: 1.35rem;
+      color: #999999;
+      line-height: 1.8;
+      margin-top: -1rem;
+    }
+
+    .insights-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    /* Flip Card Styles */
+    .flip-card {
+      background-color: transparent;
+      width: 100%;
+      height: 300px;
+      perspective: 1000px;
+    }
+
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: left;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border-radius: 8px;
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .flip-card-front {
+      background: #2a2a2a;
+      border: 1px solid rgba(255, 102, 0, 0.2);
+    }
+
+    .flip-card-back {
+      background: #ff6600;
+      color: white;
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-front h3 {
+      font-size: 1.5rem;
+      color: #ffffff;
+      margin-bottom: 1rem;
+    }
+
+    .flip-card-front p {
+      color: #cccccc;
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    .flip-card-back h4 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    .flip-card-back p {
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.7;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .flip-card-back a {
+      color: #ffffff;
+      text-decoration: underline;
+      font-weight: 600;
+      margin-top: auto;
+    }
+
+    /* About Section */
+    .about {
+      padding: 6rem 2rem;
+      background: #ffffff;
+    }
+
+    .about-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .about-content h2 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: #1a1a1a;
+      margin-bottom: 2rem;
+    }
+
+    .about-text {
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
+    }
+
+    .about-text.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .about-text p {
+      color: #666666;
+      line-height: 1.8;
+      font-size: 1.05rem;
+    }
+
+    .about-text strong {
+      color: #ff6600;
+      font-weight: 700;
+    }
+
+    .about-keywords {
+      position: sticky;
+      top: 120px;
+      background: #f5f5f5;
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 102, 0, 0.2);
+    }
+
+    .keyword-item {
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      background: #ffffff;
+      border-left: 3px solid #000000;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .keyword-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .keyword-item h5 {
+      color: #ff6600;
+      font-size: 1.3rem;
+      margin: 0;
+      font-weight: 700;
+    }
+
+    /* Mission Vision Section */
+    .mission-vision {
+      padding: 6rem 2rem;
+      background: #f5f5f5;
+    }
+
+    .mv-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .mv-card {
+      background: #ffffff;
+      padding: 3rem;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 102, 0, 0.2);
+      transition: all 0.4s ease;
+    }
+
+    .mv-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      border-color: #ff6600;
+    }
+
+    .mv-card h3 {
+      font-size: 1.8rem;
+      color: #ff6600;
+      margin-bottom: 1.5rem;
+    }
+
+    .mv-card p {
+      color: #666666;
+      line-height: 1.8;
+      font-size: 1.05rem;
+    }
+
+    /* Team Section */
+    .team {
+      padding: 6rem 2rem;
+      background: #1a1a1a;
+    }
+
+    .team-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .team-card {
+      background: #000000;
+      padding: 0;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 3rem;
+      border: 1px solid rgba(255, 102, 0, 0.2);
+      transition: all 0.4s ease;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .team-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .team-card:hover {
+      transform: translateY(-10px);
+      border-color: #ff6600;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .team-header {
+      background: #ff6600;
+      padding: 2.5rem 2rem 5rem;
+      position: relative;
+      text-align: center;
+    }
+
+    .team-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: #1a1a1a;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #ff6600;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      position: relative;
+      z-index: 1;
+    }
+
+    .team-body {
+      padding: 2.5rem;
+      margin-top: -3rem;
+      background: #1a1a1a;
+      border-radius: 8px 8px 0 0;
+      position: relative;
+    }
+
+    .team-card h3 {
+      font-size: 1.6rem;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+
+    .team-card h4 {
+      font-size: 1rem;
+      color: #ff6600;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .team-card p {
+      color: #b0b0b0;
+      line-height: 1.7;
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .team-social {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 102, 0, 0.2);
+    }
+
+    .team-social a {
+      padding: 0.6rem 1.5rem;
+      background: #000000;
+      color: #ff6600;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 102, 0, 0.2);
+    }
+
+    .team-social a:hover {
+      background: #ff6600;
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    /* Contact Section */
+    .contact {
+      padding: 6rem 2rem;
+      background: #000000;
+    }
+
+    .contact-container {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .contact-container h2 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: #e0e0e0;
+      margin-bottom: 3rem;
+    }
+
+    .contact-flip-card {
+      width: 100%;
+      max-width: 900px;
+      height: 300px;
+      perspective: 1000px;
+      margin: 0 auto;
+    }
+
+    .contact-flip-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+
+    .contact-flip-card:hover .contact-flip-inner {
+      transform: rotateY(180deg);
+    }
+
+    .contact-flip-front, .contact-flip-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border-radius: 8px;
+      padding: 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .contact-flip-front {
+      background: #1a1a1a;
+      border: 1px solid rgba(255, 102, 0, 0.2);
+    }
+
+    .contact-flip-front h3 {
+      font-size: 3rem;
+      color: #ff6600;
+      margin-bottom: 0;
+      font-weight: 700;
+    }
+
+    .contact-flip-back {
+      background: #ff6600;
+      color: white;
+      transform: rotateY(180deg);
+    }
+
+    .contact-message {
+      font-size: 1.5rem;
+      color: #ffffff;
+      font-weight: 500;
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    footer {
+      background: #000000;
+      padding: 3rem 2rem 2rem;
+      border-top: 1px solid rgba(255, 102, 0, 0.2);
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .footer-main {
+      text-align: center;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 102, 0, 0.1);
+    }
+
+    .footer-brand-text {
+      color: #999999;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .footer-links-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-bottom: 0;
+    }
+
+    .footer-column {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .footer-column h5 {
+      color: #ff6600;
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .footer-column a {
+      color: #999999;
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: all 0.3s ease;
+    }
+
+    .footer-column a:hover {
+      color: #ff6600;
+      padding-left: 5px;
+    }
+
+    /* Mobile Menu */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: #e0e0e0;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .about-container,
+      .mv-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .about-keywords {
+        position: static;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.98);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1rem;
+        border-top: 1px solid rgba(255, 102, 0, 0.2);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .intro-content h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero-logo {
+        width: 120px;
+        height: 120px;
+        font-size: 3rem;
+      }
+
+      .hero-card h3 {
+        font-size: 1.5rem;
+      }
+
+      .hero-card p {
+        font-size: 1rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .insights-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .intro-buttons {
+        flex-direction: column;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        width: 100%;
+        text-align: center;
+      }
+
+      .contact-social {
+        flex-direction: column;
+      }
+
+      .contact-social a {
+        width: 100%;
+      }
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body><!-- Navigation -->
+  <nav id="navbar">
+   <div class="nav-container">
+    <div class="nav-logo">
+     ALKA
+    </div><button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+    <ul class="nav-links" id="navLinks">
+     <li><a href="#hero">Ana Sayfa</a></li>
+     <li><a href="#insights">Teknoloji</a></li>
+     <li><a href="#about">Hakkımızda</a></li>
+     <li><a href="#team">Ekip</a></li>
+     <li><a href="#contact">İletişim</a></li>
+    </ul>
+   </div>
+  </nav><!-- Hero Section -->
+  <section class="hero" id="hero">
+   <div class="hero-container">
+    <div class="hero-card">
+     <div class="hero-logo">
+      ALKA
+     </div>
+     <h3>Kahvenin dijital sesi.</h3>
+     <p>Kodla, tasarımla ve tutku dolu fikirlerle Arabica'nın geleceğini inşa ediyoruz.</p>
+    </div>
+   </div>
+  </section><!-- Intro Section -->
+  <section class="intro">
+   <div class="intro-container">
+    <div class="intro-content">
+     <h1 id="heroTitle">Arabica Coffee House'ta doğan teknoloji takımı: ALKA</h1>
+     <h2 id="heroSubtitle">Üç genç, bir kahve zinciri ve sınırsız hayal gücü.</h2>
+     <p id="heroDescription">Arabica Coffee House için geliştirilen yenilikçi teknolojilerle, kahvenin ötesinde bir deneyim inşa ediyoruz.</p>
+     <div class="intro-buttons"><a href="#about" class="btn-primary">Bizi Tanıyın</a> <a href="#contact" class="btn-secondary">İletişime Geçin</a>
+     </div>
+    </div>
+   </div>
+  </section><!-- Tech Insights Section -->
+  <section class="tech-insights" id="insights">
+   <div class="section-header">
+    <h2 class="section-title">Kahve Endüstrisinde Dijital Dönüşüm</h2>
+    <p class="section-description">Teknoloji ve sürdürülebilirlik alanındaki güncel trendler ve bilgilendirici kaynaklar.</p>
+   </div>
+   <div class="insights-grid">
+    <div class="flip-card">
+     <div class="flip-card-inner">
+      <div class="flip-card-front">
+       <h3>Yapay Zeka ve Otomasyon</h3>
+       <p>Kahve endüstrisinde AI kullanımı, müşteri deneyimini nasıl dönüştürüyor?</p>
+      </div>
+      <div class="flip-card-back">
+       <h4>AI in Coffee Industry</h4>
+       <p>Makine öğrenimi ile kahve kalitesi tahminleme, otomatik sipariş sistemleri ve kişiselleştirilmiş öneriler.</p><a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai" target="_blank" rel="noopener noreferrer">McKinsey AI Report →</a>
+      </div>
+     </div>
+    </div>
+    <div class="flip-card">
+     <div class="flip-card-inner">
+      <div class="flip-card-front">
+       <h3>Sürdürülebilirlik</h3>
+       <p>Kahve üretiminde çevre dostu uygulamalar ve karbon ayak izi azaltma.</p>
+      </div>
+      <div class="flip-card-back">
+       <h4>SDGs &amp; Sustainability</h4>
+       <p>BM Sürdürülebilir Kalkınma Hedefleri kapsamında kahve endüstrisinin rolü ve yeşil teknolojiler.</p><a href="https://www.wri.org/insights/sustainable-coffee-production" target="_blank" rel="noopener noreferrer">World Resources Institute →</a>
+      </div>
+     </div>
+    </div>
+    <div class="flip-card">
+     <div class="flip-card-inner">
+      <div class="flip-card-front">
+       <h3>Mobil Teknolojiler</h3>
+       <p>Temassız ödeme, QR kod sipariş sistemleri ve mobil sadakat programları.</p>
+      </div>
+      <div class="flip-card-back">
+       <h4>Mobile-First Approach</h4>
+       <p>Progressive Web Apps, contactless ordering ve mobile payment sistemlerinin kahve zincirlerindeki uygulamaları.</p><a href="https://www.gartner.com/en/newsroom/press-releases/mobile-technology-trends" target="_blank" rel="noopener noreferrer">Gartner Mobile Trends →</a>
+      </div>
+     </div>
+    </div>
+    <div class="flip-card">
+     <div class="flip-card-inner">
+      <div class="flip-card-front">
+       <h3>Veri Analitiği</h3>
+       <p>Müşteri davranışı analizi, satış tahminleme ve stok optimizasyonu.</p>
+      </div>
+      <div class="flip-card-back">
+       <h4>Data-Driven Decisions</h4>
+       <p>Big Data ve analytics araçları ile operasyonel verimlilik artışı ve müşteri memnuniyeti ölçümü.</p><a href="https://hbr.org/2020/02/how-to-build-a-data-driven-company" target="_blank" rel="noopener noreferrer">Harvard Business Review →</a>
+      </div>
+     </div>
+    </div>
+    <div class="flip-card">
+     <div class="flip-card-inner">
+      <div class="flip-card-front">
+       <h3>Bulut Teknolojileri</h3>
+       <p>Cloud-based yönetim sistemleri ve gerçek zamanlı veri senkronizasyonu.</p>
+      </div>
+      <div class="flip-card-back">
+       <h4>Cloud Infrastructure</h4>
+       <p>AWS, Azure ve Google Cloud platformlarında ölçeklenebilir kahve zinciri yönetim çözümleri.</p><a href="https://www.forrester.com/blogs/category/cloud-computing/" target="_blank" rel="noopener noreferrer">Forrester Cloud Insights →</a>
+      </div>
+     </div>
+    </div>
+    <div class="flip-card">
+     <div class="flip-card-inner">
+      <div class="flip-card-front">
+       <h3>Müşteri Deneyimi</h3>
+       <p>Kişiselleştirme, gamification ve omnichannel stratejiler.</p>
+      </div>
+      <div class="flip-card-back">
+       <h4>CX Innovation</h4>
+       <p>Customer journey mapping, loyalty programs ve personalized marketing stratejileri.</p><a href="https://www.accenture.com/us-en/insights/interactive-index" target="_blank" rel="noopener noreferrer">Accenture CX Research →</a>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- About Section -->
+  <section class="about" id="about">
+   <div class="about-container">
+    <div class="about-content">
+     <h2>Biz kimiz?</h2>
+     <div class="about-text">
+      <p><strong>ALKA</strong>, Arabica Coffee House bünyesinde çalışan üç genç tarafından kurulmuş bir <strong>teknoloji grubudur</strong>.</p>
+     </div>
+     <div class="about-text">
+      <p>Amacımız, <strong>kahve deneyimini dijitalleştirerek</strong> markaya değer katan çözümler üretmektir.</p>
+     </div>
+     <div class="about-text">
+      <p>Arabica'nın enerjisinden ilham alıyor, <strong>inovasyonu</strong> her fincana taşıyoruz.</p>
+     </div>
+     <div class="about-text">
+      <p>Kodla, <strong>tasarımla</strong> ve tutku dolu fikirlerle Arabica'nın <strong>geleceğini inşa ediyoruz</strong>.</p>
+     </div>
+    </div>
+    <div class="about-keywords">
+     <div class="keyword-item">
+      <h5>İnovasyon</h5>
+     </div>
+     <div class="keyword-item">
+      <h5>Gençlik</h5>
+     </div>
+     <div class="keyword-item">
+      <h5>Sadelik</h5>
+     </div>
+     <div class="keyword-item">
+      <h5>Tutku</h5>
+     </div>
+    </div>
+   </div>
+  </section><!-- Mission Vision Section -->
+  <section class="mission-vision">
+   <div class="mv-container">
+    <div class="mv-card">
+     <h3>Misyon</h3>
+     <p id="missionText">Kahve kültürünü teknolojiyle birleştirerek Arabica Coffee House deneyimini geleceğe taşımak. Müşterilerimize dijital çözümlerle daha hızlı, daha kişiselleştirilmiş ve daha sürdürülebilir bir kahve deneyimi sunmak.</p>
+    </div>
+    <div class="mv-card">
+     <h3>Vizyon</h3>
+     <p id="visionText">Türkiye'nin en yenilikçi kahve-teknoloji ekibi olarak Arabica markasını dijital dönüşümün öncüsü haline getirmek. Kahve endüstrisinde teknoloji standartlarını belirleyen, sürdürülebilirlik ve müşteri memnuniyetini ön planda tutan bir ekosistem yaratmak.</p>
+    </div>
+   </div>
+  </section><!-- Team Section -->
+  <section class="team" id="team">
+   <div class="section-header">
+    <h2 class="section-title">ALKA'nın Kurucuları</h2>
+    <p class="section-description">Farklı disiplinlerden gelen üç genç profesyonel, ortak bir vizyonla Arabica'nın dijital geleceğini şekillendiriyor.</p>
+   </div>
+   <div class="team-container"><!-- Eslem Nur Kalay -->
+    <div class="team-card">
+     <div class="team-header">
+      <div class="team-photo">
+       ENK
+      </div>
+     </div>
+     <div class="team-body">
+      <h3>Eslem Nur Kalay</h3>
+      <h4>Politika ve İletişim Uzmanı</h4>
+      <p>Eslem Nur Kalay, siyaset bilimi, kamu yönetimi ve iletişim alanlarında disiplinler arası bir bakış açısına sahip bir profesyoneldir. Orta Doğu Teknik Üniversitesi Siyaset Bilimi ve Kamu Yönetimi öğrencisidir ve çalışmalarını dış politika, kamu diplomasisi ve sürdürülebilir kalkınma temaları üzerinde yoğunlaştırmaktadır.</p>
+      <p>Kalay, iletişim ve araştırma odaklı kuruluşlarda deneyim kazanmıştır. Özgelecek ve Locomar'da pazarlama stajlarıyla dijital iletişim ve marka yönetimi süreçlerinde çalışmış; KONDA Araştırma ve Danışmanlık'ta kamuoyu analizi üzerine saha araştırmaları yürütmüştür. EUROsimA organizasyonunda Halkla İlişkiler ve Delegasyon İlişkileri Görevlisi olarak görev alarak temsil, iletişim ve müzakere becerilerini geliştirmiştir.</p>
+      <p>Akademik üretkenliğini Hariciye Journal dergisinde yayımlanan dış politika yazılarıyla sürdürmektedir. Toplumsal duyarlılığı yüksek bir bakış açısıyla hareket eden Kalay, sosyal sorumluluk ve erişilebilirlik odaklı birçok toplulukta aktif görev almış; kamu politikası, diplomasi ve medya kesişiminde sürdürülebilir etki yaratmayı hedeflemektedir.</p>
+      <div class="team-social"><a href="https://www.linkedin.com/in/eslem-nur-kalay/" target="_blank" rel="noopener noreferrer">LinkedIn</a> <a href="https://www.instagram.com/eslemnurkalay/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      </div>
+     </div>
+    </div><!-- Arif Demir -->
+    <div class="team-card">
+     <div class="team-header">
+      <div class="team-photo">
+       AD
+      </div>
+     </div>
+     <div class="team-body">
+      <h3>Arif Demir</h3>
+      <h4>Girişimci &amp; Teknoloji Geliştirici</h4>
+      <p>Arif Demir, mühendislik, girişimcilik ve liderlik alanlarında çok yönlü bir profesyoneldir. TOBB Ekonomi ve Teknoloji Üniversitesi Elektrik-Elektronik Mühendisliği ve Matematik bölümlerinden mezun olan Demir, mühendislik bilgisini yenilikçi iş modelleriyle birleştirerek teknoloji, tasarım ve marka yönetimi odaklı projeler geliştirmektedir.</p>
+      <p>Savunma sanayiinde FNSS Savunma Sistemleri A.Ş., endüstriyel üretimde Arçelik Ar-Ge Merkezi, finansal teknolojilerde Papara ve uluslararası düzeyde İktisadi Kalkınma Vakfı Brüksel Ofisi gibi kurumlarda çalışarak farklı sektörlerde deneyim kazanmıştır. Demir, restoran, kafe ve marketlerdeki fazla ancak taze ürünleri kullanıcılarla buluşturarak çevresel ve ekonomik sürdürülebilirliğe katkı sağlayan, Sürdürülebilir Kalkınma Amaçları (özellikle SDG 12 ve 13) doğrultusunda sosyal etki odaklı bir girişim olan Rafta'nın kurucusudur.</p>
+      <p>Liderlik yönüyle öne çıkan Demir; TOBB ETÜ Öğrenci Konseyi Başkanı olarak binlerce öğrenciyi temsil etmiş, ayrıca IEEE TOBB ETÜ ve Google Developer Student Clubs başkanlık görevleriyle kampüs topluluklarında teknoloji kültürünün gelişimine katkıda bulunmuştur. Yenibirlider LEAD21 Fellow olarak seçilen Türkiye'nin 21 genç liderinden biri olan Demir, teknoloji, girişimcilik ve sürdürülebilirlik alanlarını bir araya getiren çalışmalarıyla ilham vermeye devam etmektedir.</p>
+      <div class="team-social"><a href="https://www.linkedin.com/in/arif-demir/" target="_blank" rel="noopener noreferrer">LinkedIn</a> <a href="https://www.instagram.com/arifdemir/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      </div>
+     </div>
+    </div><!-- Ela Erdinç -->
+    <div class="team-card">
+     <div class="team-header">
+      <div class="team-photo">
+       EE
+      </div>
+     </div>
+     <div class="team-body">
+      <h3>Ela Erdinç</h3>
+      <h4>Gıda Bilimi ve Kalite Sistemleri Uzmanı</h4>
+      <p>Ela Erdinç, gıda mühendisliği, kalite yönetimi ve üretim teknolojileri alanlarında uzmanlaşan bir profesyoneldir. Orta Doğu Teknik Üniversitesi Gıda Mühendisliği bölümünde eğitimine devam etmekte ve akademik çalışmalarında gıda güvenliği, proses verimliliği ve sürdürülebilir üretim sistemlerine odaklanmaktadır.</p>
+      <p>Erdinç, gıda sektörünün öncü kurumlarında edindiği deneyimlerle laboratuvar analizleri, kalite kontrol ve üretim optimizasyonu konularında yetkinlik kazanmıştır. Kavaklıdere A.Ş. ve Atatürk Orman Çiftliği Meyve Suyu ve Bal Fabrikası'nda gerçekleştirdiği stajlar, hammaddeden nihai ürüne kadar tüm üretim zincirinde aktif sorumluluk almasını sağlamıştır.</p>
+      <p>Analitik düşünme yeteneği, disiplinli çalışma biçimi ve sürdürülebilir üretime olan ilgisiyle öne çıkan Erdinç; kalite sistemleri, gıda bilimi ve ürün güvenliği alanlarında yenilikçi çözümler geliştirmeyi hedeflemektedir.</p>
+      <div class="team-social"><a href="https://www.linkedin.com/in/ela-erdinc/" target="_blank" rel="noopener noreferrer">LinkedIn</a> <a href="https://www.instagram.com/elaerdinc/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Contact Section -->
+  <section class="contact" id="contact">
+   <div class="contact-container">
+    <div class="contact-flip-card">
+     <div class="contact-flip-inner">
+      <div class="contact-flip-front">
+       <h3>İletişim</h3>
+      </div>
+      <div class="contact-flip-back">
+       <p class="contact-message" id="contactMessage">Bizi nerede bulacağınızı biliyorsunuz.</p>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Footer -->
+  <footer>
+   <div class="footer-content">
+    <div class="footer-links-container">
+     <div class="footer-column">
+      <h5>ALKA</h5><a href="#about">Hakkımızda</a> <a href="#team">Ekip</a> <a href="#contact">İletişim</a>
+     </div>
+     <div class="footer-column">
+      <h5>Teknoloji</h5><a href="#insights">İnovasyon</a> <a href="#insights">Sürdürülebilirlik</a> <a href="#insights">Veri Analitiği</a>
+     </div>
+     <div class="footer-column">
+      <h5>Sosyal Medya</h5><a href="https://www.linkedin.com/in/eslem-nur-kalay/" target="_blank" rel="noopener noreferrer">Eslem - LinkedIn</a> <a href="https://www.linkedin.com/in/arif-demir/" target="_blank" rel="noopener noreferrer">Arif - LinkedIn</a> <a href="https://www.linkedin.com/in/ela-erdinc/" target="_blank" rel="noopener noreferrer">Ela - LinkedIn</a>
+     </div>
+     <div class="footer-column">
+      <h5>Yasal</h5><a href="#">Gizlilik Politikası</a> <a href="#">Kullanım Koşulları</a> <a href="#">Çerez Politikası</a>
+     </div>
+    </div>
+    <div class="footer-main">
+     <p class="footer-brand-text">© 2025 ALKA — Arabica Coffee House bünyesinde doğan bağımsız teknoloji girişim grubudur.</p>
+    </div>
+   </div>
+  </footer>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script>
+    // Mobile menu toggle
+    function toggleMenu() {
+      const navLinks = document.getElementById('navLinks');
+      navLinks.classList.toggle('active');
+    }
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.remove('active');
+      });
+    });
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // About section scroll animations
+    const aboutTexts = document.querySelectorAll('.about-text');
+    const observerOptions = {
+      threshold: 0.2,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const aboutObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, index * 200);
+        }
+      });
+    }, observerOptions);
+
+    aboutTexts.forEach(text => {
+      aboutObserver.observe(text);
+    });
+
+    // Team cards scroll animations
+    const teamCards = document.querySelectorAll('.team-card');
+    const teamObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, index * 300);
+        }
+      });
+    }, observerOptions);
+
+    teamCards.forEach(card => {
+      teamObserver.observe(card);
+    });
+
+    // Keyword items scroll animations
+    const keywordItems = document.querySelectorAll('.keyword-item');
+    const keywordObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, index * 200);
+        }
+      });
+    }, observerOptions);
+
+    keywordItems.forEach(item => {
+      keywordObserver.observe(item);
+    });
+
+    // Element SDK Configuration
+    const defaultConfig = {
+      hero_title: "Arabica Coffee House'ta doğan teknoloji takımı: ALKA",
+      hero_subtitle: "Üç genç, bir kahve zinciri ve sınırsız hayal gücü.",
+      hero_description: "Arabica Coffee House için geliştirilen yenilikçi teknolojilerle, kahvenin ötesinde bir deneyim inşa ediyoruz.",
+      mission_text: "Kahve kültürünü teknolojiyle birleştirerek Arabica Coffee House deneyimini geleceğe taşımak. Müşterilerimize dijital çözümlerle daha hızlı, daha kişiselleştirilmiş ve daha sürdürülebilir bir kahve deneyimi sunmak.",
+      vision_text: "Türkiye'nin en yenilikçi kahve-teknoloji ekibi olarak Arabica markasını dijital dönüşümün öncüsü haline getirmek. Kahve endüstrisinde teknoloji standartlarını belirleyen, sürdürülebilirlik ve müşteri memnuniyetini ön planda tutan bir ekosistem yaratmak.",
+      contact_message: "Bizi nerede bulacağınızı biliyorsunuz.",
+      primary_color: "#ff6600",
+      secondary_color: "#1a1a1a",
+      background_color: "#000000"
+    };
+
+    async function onConfigChange(config) {
+      document.getElementById('heroTitle').textContent = config.hero_title || defaultConfig.hero_title;
+      document.getElementById('heroSubtitle').textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+      document.getElementById('heroDescription').textContent = config.hero_description || defaultConfig.hero_description;
+      document.getElementById('missionText').textContent = config.mission_text || defaultConfig.mission_text;
+      document.getElementById('visionText').textContent = config.vision_text || defaultConfig.vision_text;
+      document.getElementById('contactMessage').textContent = config.contact_message || defaultConfig.contact_message;
+
+      // Apply colors
+      const primaryColor = config.primary_color || defaultConfig.primary_color;
+      const secondaryColor = config.secondary_color || defaultConfig.secondary_color;
+      const bgColor = config.background_color || defaultConfig.background_color;
+
+      document.documentElement.style.setProperty('--primary-color', primaryColor);
+      document.documentElement.style.setProperty('--secondary-color', secondaryColor);
+      document.documentElement.style.setProperty('--bg-color', bgColor);
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.primary_color || defaultConfig.primary_color,
+            set: (value) => {
+              if (window.elementSdk) {
+                window.elementSdk.setConfig({ primary_color: value });
+              }
+            }
+          },
+          {
+            get: () => config.secondary_color || defaultConfig.secondary_color,
+            set: (value) => {
+              if (window.elementSdk) {
+                window.elementSdk.setConfig({ secondary_color: value });
+              }
+            }
+          },
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => {
+              if (window.elementSdk) {
+                window.elementSdk.setConfig({ background_color: value });
+              }
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: undefined,
+        fontSizeable: undefined
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ["hero_title", config.hero_title || defaultConfig.hero_title],
+        ["hero_subtitle", config.hero_subtitle || defaultConfig.hero_subtitle],
+        ["hero_description", config.hero_description || defaultConfig.hero_description],
+        ["mission_text", config.mission_text || defaultConfig.mission_text],
+        ["vision_text", config.vision_text || defaultConfig.vision_text],
+        ["contact_message", config.contact_message || defaultConfig.contact_message]
+      ]);
+    }
+
+    // Initialize Element SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99cc7ca45304a42e',t:'MTc2Mjg1MDQ0OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
